@@ -29,6 +29,7 @@
 html,body{height:100%;overscroll-behavior:none;-webkit-overflow-scrolling:touch;}
 body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100dvh;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:calc(var(--safe-top) + 0.25rem) 1rem 0;overflow-x:hidden;overflow-y:auto;}
 .screen{display:none;width:100%;max-width:440px;animation:fadeUp 0.35s ease;flex-direction:column;align-items:center;padding-bottom:2rem;}
+.popup-hidden{display:none!important;}
 .screen.active{display:flex;}
 .screen.has-nav{padding-bottom:5rem;}
 #bottom-nav{
@@ -562,7 +563,7 @@ input::placeholder{color:var(--muted);}
 </div>
 
 <!-- SIGN IN POPUP OVERLAY -->
-<div id="signin-popup-overlay" style="position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.75);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);display:none;align-items:flex-end;justify-content:center;" onclick="closeSignInPopup(event)">
+<div id="signin-popup-overlay" class="popup-hidden" style="position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.75);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);align-items:flex-end;justify-content:center;" onclick="closeSignInPopup(event)">
   <div id="signin-popup" style="background:var(--surface);border-radius:24px 24px 0 0;width:100%;max-width:480px;max-height:92dvh;overflow-y:auto;padding:0 0 2rem 0;box-shadow:0 -8px 40px rgba(0,0,0,0.5);">
 
     <!-- Drag handle -->
@@ -6877,14 +6878,13 @@ initHomeParticles();
 // ── SIGN IN POPUP ─────────────────────────────────────────
 function openSignInPopup() {
   const overlay = document.getElementById('signin-popup-overlay');
-  overlay.style.cssText = overlay.style.cssText.replace('display:none','display:flex');
+  overlay.classList.remove('popup-hidden');
   overlay.style.display = 'flex';
   overlay.style.opacity = '0';
   overlay.style.transition = 'opacity 0.2s';
   requestAnimationFrame(() => { overlay.style.opacity = '1'; });
-  // Reset waitlist state if previously submitted
   const section = document.getElementById('popup-waitlist-section');
-  if (localStorage.getItem('rw_waitlist') === '1') {
+  if (section && localStorage.getItem('rw_waitlist') === '1') {
     section.innerHTML = '<div style="text-align:center;padding:0.5rem 0;color:var(--accent);font-size:0.85rem;font-weight:600;">✓ You\'re on the list! We\'ll be in touch.</div>';
   }
 }
@@ -6893,7 +6893,11 @@ function closeSignInPopup(e) {
   if (e && e.target !== document.getElementById('signin-popup-overlay')) return;
   const overlay = document.getElementById('signin-popup-overlay');
   overlay.style.opacity = '0';
-  setTimeout(() => { overlay.style.display = 'none'; overlay.style.opacity = ''; }, 200);
+  setTimeout(() => {
+    overlay.style.display = 'none';
+    overlay.classList.add('popup-hidden');
+    overlay.style.opacity = '';
+  }, 200);
 }
 
 async function submitPopupWaitlist() {
