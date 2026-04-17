@@ -479,7 +479,7 @@ input::placeholder{color:var(--muted);}
 .dq-reward{font-size:0.72rem;color:var(--accent);font-weight:600;}
 /* ── SIGN IN DIALOG ── */
 #rw-dialog{border:none;padding:0;background:transparent;width:100%;max-width:480px;margin:auto auto 0 auto;max-height:92dvh;overflow:visible;}
-#rw-dialog::backdrop{background:rgba(0,0,0,0.75);backdrop-filter:blur(6px);}
+#rw-dialog::backdrop{background:rgba(0,0,0,0.8);backdrop-filter:blur(8px);}
 #rw-dialog-inner{background:var(--surface);border-radius:24px 24px 0 0;width:100%;overflow-y:auto;max-height:92dvh;padding:0 0 2rem;}
 </style>
 </head>
@@ -7079,70 +7079,161 @@ initHomeParticles();
 <!-- ── SIGN IN DIALOG ── -->
 <dialog id="rw-dialog" onclick="rwDialogBackdropClose(event)">
   <div id="rw-dialog-inner">
-    <div style="display:flex;justify-content:center;padding:14px 0 8px;">
-      <div style="width:40px;height:4px;border-radius:2px;background:rgba(255,255,255,0.15);"></div>
+
+    <!-- Drag handle -->
+    <div style="display:flex;justify-content:center;padding:14px 0 4px;">
+      <div style="width:36px;height:4px;border-radius:2px;background:rgba(255,255,255,0.12);"></div>
     </div>
-    <div style="text-align:center;padding:0.5rem 1.5rem 1rem;">
-      <div style="font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--text);margin-bottom:0.3rem;">Join the readers 🌳</div>
-      <div style="font-size:0.8rem;color:var(--muted);line-height:1.5;">The full Readwood experience is cooking.<br>Be first in when it's ready.</div>
+
+    <!-- Headline -->
+    <div style="text-align:center;padding:0.6rem 1.5rem 0.8rem;">
+      <div style="font-family:'Playfair Display',serif;font-size:1.35rem;color:var(--text);margin-bottom:0.25rem;">Your next read is one swipe away 📖</div>
+      <div style="font-size:0.78rem;color:var(--muted);line-height:1.6;">Track what you read. Grow a forest. Pick books with friends.</div>
     </div>
-    <!-- Social proof cards -->
-    <div style="overflow-x:auto;display:flex;gap:12px;padding:0 1.2rem 1rem;scrollbar-width:none;">
-      <div style="flex:0 0 190px;background:var(--surface2);border-radius:16px;padding:1rem;border:1px solid var(--border);">
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:0.6rem;">
-          <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#f0d080,#c9a830);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.85rem;color:#1a1000;flex-shrink:0;">AM</div>
-          <div><div style="font-size:0.8rem;font-weight:600;color:var(--text);">Ana M.</div><div style="font-size:0.68rem;color:var(--muted);">3 books/month</div></div>
+
+    <!-- App mockup carousel -->
+    <div style="overflow-x:auto;display:flex;gap:10px;padding:0 1.2rem 1rem;scrollbar-width:none;-ms-overflow-style:none;">
+
+      <!-- Mockup 1: Swipe -->
+      <div style="flex:0 0 130px;height:220px;background:linear-gradient(160deg,#1a1a1e 0%,#242428 100%);border-radius:16px;border:1px solid rgba(240,208,128,0.2);overflow:hidden;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:12px 10px;box-shadow:0 4px 24px rgba(0,0,0,0.4);">
+        <div style="font-size:0.6rem;color:var(--accent);font-weight:700;letter-spacing:0.08em;margin-bottom:8px;text-transform:uppercase;">Pick a Book</div>
+        <!-- Book card mockup -->
+        <div style="width:100%;background:#2a2a30;border-radius:10px;padding:8px;flex:1;display:flex;flex-direction:column;gap:5px;">
+          <div style="height:80px;background:linear-gradient(135deg,#3d2e1e,#5c4430);border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:1.8rem;">📚</div>
+          <div style="height:7px;background:rgba(240,208,128,0.3);border-radius:4px;width:80%;"></div>
+          <div style="height:5px;background:rgba(255,255,255,0.1);border-radius:4px;width:60%;"></div>
+          <div style="height:5px;background:rgba(255,255,255,0.07);border-radius:4px;width:70%;"></div>
+          <!-- Yes/No buttons -->
+          <div style="display:flex;gap:6px;margin-top:4px;">
+            <div style="flex:1;height:22px;background:rgba(76,175,135,0.25);border-radius:6px;border:1px solid rgba(76,175,135,0.4);display:flex;align-items:center;justify-content:center;font-size:0.65rem;color:#4caf87;font-weight:700;">✓</div>
+            <div style="flex:1;height:22px;background:rgba(224,92,92,0.2);border-radius:6px;border:1px solid rgba(224,92,92,0.3);display:flex;align-items:center;justify-content:center;font-size:0.65rem;color:#e05c5c;font-weight:700;">✕</div>
+          </div>
         </div>
-        <div style="font-size:0.75rem;color:var(--muted);line-height:1.5;font-style:italic;">"Found my next read in 2 minutes. My book club loves it."</div>
-        <div style="margin-top:0.5rem;font-size:0.7rem;color:var(--accent);">📖 The Midnight Library</div>
       </div>
-      <div style="flex:0 0 190px;background:var(--surface2);border-radius:16px;padding:1rem;border:1px solid var(--border);">
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:0.6rem;">
-          <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#7eb8f0,#4a90d9);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.85rem;color:#fff;flex-shrink:0;">JK</div>
-          <div><div style="font-size:0.8rem;font-weight:600;color:var(--text);">Jonas K.</div><div style="font-size:0.68rem;color:var(--muted);">12 trees grown 🌲</div></div>
+
+      <!-- Mockup 2: Dashboard -->
+      <div style="flex:0 0 130px;height:220px;background:linear-gradient(160deg,#1a1a1e 0%,#242428 100%);border-radius:16px;border:1px solid rgba(240,208,128,0.2);overflow:hidden;position:relative;padding:12px 10px;box-shadow:0 4px 24px rgba(0,0,0,0.4);">
+        <div style="font-size:0.6rem;color:var(--accent);font-weight:700;letter-spacing:0.08em;margin-bottom:8px;text-transform:uppercase;">Dashboard</div>
+        <!-- Calendar strip -->
+        <div style="display:flex;gap:3px;margin-bottom:8px;">
+          <div style="flex:1;height:18px;background:rgba(240,208,128,0.15);border-radius:4px;"></div>
+          <div style="flex:1;height:18px;background:rgba(240,208,128,0.15);border-radius:4px;"></div>
+          <div style="flex:1;height:18px;background:var(--accent);border-radius:4px;opacity:0.8;"></div>
+          <div style="flex:1;height:18px;background:rgba(240,208,128,0.4);border-radius:4px;"></div>
+          <div style="flex:1;height:18px;background:rgba(240,208,128,0.4);border-radius:4px;"></div>
+          <div style="flex:1;height:18px;background:rgba(255,255,255,0.06);border-radius:4px;"></div>
+          <div style="flex:1;height:18px;background:rgba(255,255,255,0.06);border-radius:4px;"></div>
         </div>
-        <div style="font-size:0.75rem;color:var(--muted);line-height:1.5;font-style:italic;">"I read more just to plant trees in my forest."</div>
-        <div style="margin-top:0.5rem;font-size:0.7rem;color:var(--accent);">🔥 41-day streak</div>
-      </div>
-      <div style="flex:0 0 190px;background:var(--surface2);border-radius:16px;padding:1rem;border:1px solid var(--border);">
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:0.6rem;">
-          <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#f09070,#d95030);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.85rem;color:#fff;flex-shrink:0;">SR</div>
-          <div><div style="font-size:0.8rem;font-weight:600;color:var(--text);">Sara R.</div><div style="font-size:0.68rem;color:var(--muted);">Book club host</div></div>
+        <!-- Quest strip -->
+        <div style="background:#2a2a30;border-radius:7px;padding:6px 7px;margin-bottom:6px;">
+          <div style="height:5px;background:rgba(240,208,128,0.2);border-radius:3px;width:100%;"><div style="width:65%;height:100%;background:var(--accent);border-radius:3px;opacity:0.7;"></div></div>
+          <div style="height:4px;background:rgba(255,255,255,0.06);border-radius:3px;width:70%;margin-top:4px;"></div>
         </div>
-        <div style="font-size:0.75rem;color:var(--muted);line-height:1.5;font-style:italic;">"We pick our monthly book in 10 mins. No more arguments!"</div>
-        <div style="margin-top:0.5rem;font-size:0.7rem;color:var(--accent);">👥 Club: 8 members</div>
+        <!-- Book card -->
+        <div style="background:#2a2a30;border-radius:7px;padding:6px 7px;display:flex;gap:6px;align-items:center;">
+          <div style="width:22px;height:30px;background:linear-gradient(135deg,#4caf87,#2e8a5a);border-radius:3px;flex-shrink:0;"></div>
+          <div style="flex:1;">
+            <div style="height:5px;background:rgba(255,255,255,0.15);border-radius:3px;width:90%;margin-bottom:3px;"></div>
+            <div style="height:4px;background:rgba(255,255,255,0.07);border-radius:3px;width:60%;"></div>
+          </div>
+        </div>
+        <!-- Forest mini -->
+        <div style="margin-top:6px;background:#2a2a30;border-radius:7px;height:38px;display:flex;align-items:center;justify-content:center;gap:4px;font-size:1rem;">
+          🌲🌸🍄
+        </div>
       </div>
+
+      <!-- Mockup 3: Forest -->
+      <div style="flex:0 0 130px;height:220px;background:linear-gradient(160deg,#0e1a12 0%,#1a2e1e 100%);border-radius:16px;border:1px solid rgba(240,208,128,0.2);overflow:hidden;position:relative;padding:12px 10px;box-shadow:0 4px 24px rgba(0,0,0,0.4);">
+        <div style="font-size:0.6rem;color:var(--accent);font-weight:700;letter-spacing:0.08em;margin-bottom:6px;text-transform:uppercase;">My Forest</div>
+        <div style="text-align:center;font-size:0.65rem;color:var(--muted);margin-bottom:8px;">🪙 340 coins</div>
+        <!-- Isometric grid mockup -->
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:3px;">
+          <div style="aspect-ratio:1;background:rgba(76,175,135,0.15);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:0.75rem;">🌲</div>
+          <div style="aspect-ratio:1;background:rgba(76,175,135,0.15);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:0.75rem;">🌸</div>
+          <div style="aspect-ratio:1;background:rgba(76,175,135,0.15);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:0.75rem;">🌲</div>
+          <div style="aspect-ratio:1;background:rgba(76,175,135,0.15);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:0.75rem;">🍄</div>
+          <div style="aspect-ratio:1;background:rgba(76,175,135,0.15);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:0.75rem;">🌿</div>
+          <div style="aspect-ratio:1;background:rgba(76,175,135,0.15);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:0.75rem;">🌲</div>
+          <div style="aspect-ratio:1;background:rgba(76,175,135,0.08);border-radius:4px;"></div>
+          <div style="aspect-ratio:1;background:rgba(76,175,135,0.08);border-radius:4px;"></div>
+        </div>
+        <div style="margin-top:8px;font-size:0.65rem;color:var(--muted);text-align:center;line-height:1.4;">Every book you finish<br>grows a new tree 🌱</div>
+      </div>
+
+      <!-- Mockup 4: Book Club -->
+      <div style="flex:0 0 130px;height:220px;background:linear-gradient(160deg,#1a1a1e 0%,#242428 100%);border-radius:16px;border:1px solid rgba(240,208,128,0.2);overflow:hidden;position:relative;padding:12px 10px;box-shadow:0 4px 24px rgba(0,0,0,0.4);">
+        <div style="font-size:0.6rem;color:var(--accent);font-weight:700;letter-spacing:0.08em;margin-bottom:8px;text-transform:uppercase;">Book Club</div>
+        <!-- Member avatars -->
+        <div style="display:flex;gap:-4px;margin-bottom:8px;">
+          <div style="width:26px;height:26px;border-radius:50%;background:linear-gradient(135deg,#f0d080,#c9a830);display:flex;align-items:center;justify-content:center;font-size:0.55rem;font-weight:700;color:#1a1000;border:1.5px solid #1a1a1e;">AM</div>
+          <div style="width:26px;height:26px;border-radius:50%;background:linear-gradient(135deg,#7eb8f0,#4a90d9);display:flex;align-items:center;justify-content:center;font-size:0.55rem;font-weight:700;color:#fff;border:1.5px solid #1a1a1e;margin-left:-6px;">JK</div>
+          <div style="width:26px;height:26px;border-radius:50%;background:linear-gradient(135deg,#f09070,#d95030);display:flex;align-items:center;justify-content:center;font-size:0.55rem;font-weight:700;color:#fff;border:1.5px solid #1a1a1e;margin-left:-6px;">SR</div>
+          <div style="width:26px;height:26px;border-radius:50%;background:rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:center;font-size:0.6rem;color:var(--muted);border:1.5px solid rgba(255,255,255,0.1);margin-left:-6px;">+5</div>
+        </div>
+        <!-- Current book -->
+        <div style="background:#2a2a30;border-radius:7px;padding:7px;margin-bottom:6px;">
+          <div style="font-size:0.58rem;color:var(--muted);margin-bottom:3px;">Currently reading</div>
+          <div style="height:5px;background:rgba(240,208,128,0.3);border-radius:3px;width:85%;margin-bottom:3px;"></div>
+          <div style="height:4px;background:rgba(255,255,255,0.07);border-radius:3px;width:55%;"></div>
+        </div>
+        <!-- Progress bars -->
+        <div style="display:flex;flex-direction:column;gap:4px;">
+          <div style="display:flex;align-items:center;gap:5px;">
+            <div style="width:16px;height:16px;border-radius:50%;background:linear-gradient(135deg,#f0d080,#c9a830);font-size:0.45rem;display:flex;align-items:center;justify-content:center;font-weight:700;color:#1a1000;flex-shrink:0;">AM</div>
+            <div style="flex:1;height:4px;background:rgba(255,255,255,0.06);border-radius:2px;"><div style="width:78%;height:100%;background:var(--accent);border-radius:2px;opacity:0.7;"></div></div>
+          </div>
+          <div style="display:flex;align-items:center;gap:5px;">
+            <div style="width:16px;height:16px;border-radius:50%;background:linear-gradient(135deg,#7eb8f0,#4a90d9);font-size:0.45rem;display:flex;align-items:center;justify-content:center;font-weight:700;color:#fff;flex-shrink:0;">JK</div>
+            <div style="flex:1;height:4px;background:rgba(255,255,255,0.06);border-radius:2px;"><div style="width:45%;height:100%;background:#7eb8f0;border-radius:2px;opacity:0.7;"></div></div>
+          </div>
+          <div style="display:flex;align-items:center;gap:5px;">
+            <div style="width:16px;height:16px;border-radius:50%;background:linear-gradient(135deg,#f09070,#d95030);font-size:0.45rem;display:flex;align-items:center;justify-content:center;font-weight:700;color:#fff;flex-shrink:0;">SR</div>
+            <div style="flex:1;height:4px;background:rgba(255,255,255,0.06);border-radius:2px;"><div style="width:92%;height:100%;background:#f09070;border-radius:2px;opacity:0.7;"></div></div>
+          </div>
+        </div>
+      </div>
+
     </div>
-    <!-- Divider -->
-    <div style="height:1px;background:var(--border);margin:0 1.2rem 1.2rem;"></div>
-    <!-- Waitlist -->
+
+    <!-- Social proof count -->
+    <div style="text-align:center;margin:0 1.2rem 1rem;padding:0.6rem;background:rgba(240,208,128,0.06);border-radius:10px;border:1px solid rgba(240,208,128,0.12);">
+      <span style="font-size:0.82rem;color:var(--accent);font-weight:700;">🌱 847 book lovers</span>
+      <span style="font-size:0.82rem;color:var(--muted);"> already saved their spot</span>
+    </div>
+
+    <!-- Waitlist form -->
     <div style="padding:0 1.2rem;" id="rw-waitlist-section">
-      <div style="font-size:0.85rem;font-weight:600;color:var(--text);margin-bottom:0.6rem;text-align:center;">🍞 Still baking — get early access</div>
+      <div style="font-size:0.82rem;color:var(--muted);text-align:center;margin-bottom:0.7rem;line-height:1.5;">🍞 Still baking — be first in when it's done</div>
       <div style="display:flex;gap:8px;margin-bottom:0.4rem;">
         <input id="rw-email" type="email" placeholder="your@email.com" style="flex:1;background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:0.65rem 0.9rem;color:var(--text);font-size:0.85rem;outline:none;font-family:'DM Sans',sans-serif;">
-        <button id="rw-submit-btn" onclick="rwSubmitWaitlist()" style="background:var(--accent);color:#1a1000;border:none;border-radius:10px;padding:0.65rem 1rem;font-weight:700;font-size:0.82rem;cursor:pointer;font-family:'DM Sans',sans-serif;">Join</button>
+        <button id="rw-submit-btn" onclick="rwSubmitWaitlist()" style="background:var(--accent);color:#1a1000;border:none;border-radius:10px;padding:0.65rem 1.1rem;font-weight:700;font-size:0.82rem;cursor:pointer;font-family:'DM Sans',sans-serif;white-space:nowrap;">Join</button>
       </div>
       <div id="rw-waitlist-msg" style="font-size:0.75rem;text-align:center;min-height:1rem;color:var(--muted);"></div>
     </div>
-    <!-- OR -->
-    <div style="display:flex;align-items:center;gap:10px;padding:0.8rem 1.2rem;">
+
+    <!-- OR divider -->
+    <div style="display:flex;align-items:center;gap:10px;padding:0.75rem 1.2rem;">
       <div style="flex:1;height:1px;background:var(--border);"></div>
       <div style="font-size:0.72rem;color:var(--muted);">have an account?</div>
       <div style="flex:1;height:1px;background:var(--border);"></div>
     </div>
-    <!-- Buttons -->
+
+    <!-- Sign in / Sign up -->
     <div style="display:flex;gap:10px;padding:0 1.2rem;">
       <button onclick="document.getElementById('rw-dialog').close();show('login');" style="flex:1;background:var(--surface2);border:1px solid var(--border);border-radius:12px;padding:0.75rem;color:var(--text);font-size:0.85rem;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;">Sign In</button>
       <button onclick="document.getElementById('rw-dialog').close();show('signup');" style="flex:1;background:transparent;border:1px solid var(--accent);border-radius:12px;padding:0.75rem;color:var(--accent);font-size:0.85rem;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;">Sign Up Free</button>
     </div>
+
   </div>
 </dialog>
 
 <script>
 function rwOpenDialog() {
   const d = document.getElementById('rw-dialog');
-  if (localStorage.getItem('rw_waitlist') === '1') {
-    document.getElementById('rw-waitlist-section').innerHTML = '<div style="text-align:center;padding:0.6rem 0;color:var(--accent);font-size:0.85rem;font-weight:600;">✓ You\'re on the list! 🌳</div>';
+  const section = document.getElementById('rw-waitlist-section');
+  if (section && localStorage.getItem('rw_waitlist') === '1') {
+    section.innerHTML = '<div style="text-align:center;padding:0.6rem 0 0.4rem;color:var(--accent);font-size:0.85rem;font-weight:600;">✓ You\'re on the list! 🌳<br><span style="font-size:0.75rem;color:var(--muted);font-weight:400;">We\'ll reach out when Readwood is ready.</span></div>';
   }
   d.showModal();
 }
