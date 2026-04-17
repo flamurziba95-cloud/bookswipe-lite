@@ -293,13 +293,13 @@ input::placeholder{color:var(--muted);}
 /* Home */
 /* ─── HOME SCREEN REDESIGN ─── */
 .home-screen{
-  min-height:80dvh;height:80dvh;display:flex;flex-direction:column;
+  min-height:80dvh;height:auto;display:flex;flex-direction:column;
   align-items:center;justify-content:center;
-  position:relative;overflow:hidden;padding:2rem 1.5rem;
+  position:relative;overflow:visible;padding:2rem 1.5rem;
   width:100%;max-width:440px;
 }
 /* Animated background particles */
-.home-particles{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:0;}
+.home-particles{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:0;clip-path:inset(0);}
 .home-screen>*:not(.home-particles){position:relative;z-index:1;}
 .hero-btn,.secondary-home-btn,.home-divider,.home-tagline,.home-logo-wrap,.home-proof{pointer-events:auto;}
 .particle{position:absolute;font-size:1.2rem;opacity:0;animation:particleFloat linear infinite;will-change:transform;}
@@ -7092,7 +7092,7 @@ initHomeParticles();
     <!-- Headline -->
     <div style="text-align:center;padding:0.6rem 1.5rem 0.5rem;">
       <div style="font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--text);margin-bottom:0.3rem;">Your next read is one swipe away 📖</div>
-      <div style="font-size:0.78rem;color:var(--muted);line-height:1.6;">Track what you read. Pick books with friends.<br>Challenges and Achievements.</div>
+      <div style="font-size:0.78rem;color:var(--muted);line-height:1.6;">Track what you read. Pick books with friends.</div>
       <div style="font-size:0.78rem;color:var(--muted);margin-top:0.4rem;font-style:italic;">"The fastest way to pick your next book — and actually read it."</div>
     </div>
 
