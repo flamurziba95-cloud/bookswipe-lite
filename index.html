@@ -6877,12 +6877,11 @@ initHomeParticles();
 // ── SIGN IN POPUP ─────────────────────────────────────────
 function openSignInPopup() {
   const overlay = document.getElementById('signin-popup-overlay');
+  overlay.style.cssText = overlay.style.cssText.replace('display:none','display:flex');
   overlay.style.display = 'flex';
-  requestAnimationFrame(() => {
-    overlay.style.opacity = '0';
-    overlay.style.transition = 'opacity 0.2s';
-    requestAnimationFrame(() => { overlay.style.opacity = '1'; });
-  });
+  overlay.style.opacity = '0';
+  overlay.style.transition = 'opacity 0.2s';
+  requestAnimationFrame(() => { overlay.style.opacity = '1'; });
   // Reset waitlist state if previously submitted
   const section = document.getElementById('popup-waitlist-section');
   if (localStorage.getItem('rw_waitlist') === '1') {
