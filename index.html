@@ -534,7 +534,7 @@ input::placeholder{color:var(--muted);}
     <!-- Log In button — dark + gold glow -->
     <button class="login-home-btn" onclick="openSignInPopup()">
       <div class="login-home-btn-text">
-        <span style="font-size:0.95rem;">🔑 Sign In / Sign Up</span>
+        <span style="font-size:0.95rem;">🔑 Sign In</span>
         <span class="login-home-btn-label">Dashboard · Book Club · Forest · Goals · Rewards</span>
       </div>
     </button>
@@ -562,7 +562,7 @@ input::placeholder{color:var(--muted);}
 </div>
 
 <!-- SIGN IN POPUP OVERLAY -->
-<div id="signin-popup-overlay" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.75);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);display:none;align-items:flex-end;justify-content:center;" onclick="closeSignInPopup(event)">
+<div id="signin-popup-overlay" style="position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.75);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);display:none;align-items:flex-end;justify-content:center;" onclick="closeSignInPopup(event)">
   <div id="signin-popup" style="background:var(--surface);border-radius:24px 24px 0 0;width:100%;max-width:480px;max-height:92dvh;overflow-y:auto;padding:0 0 2rem 0;box-shadow:0 -8px 40px rgba(0,0,0,0.5);">
 
     <!-- Drag handle -->
