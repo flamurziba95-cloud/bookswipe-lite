@@ -4618,6 +4618,7 @@ window.doLogin = doLogin;
 window.doSignup = doSignup;
 window.doLogout = doLogout;
 window.showToGoBooks = showToGoBooks;
+window._showToGoBooks = showToGoBooks;
 window.removeToGoBook = removeToGoBook;
 window.renderCalendarStrip = renderCalendarStrip;
 window.showDashboard = showDashboard;
@@ -6073,6 +6074,7 @@ function showModeSelect(mode){
   else show('multi-setup');
 }
 window.showModeSelect=showModeSelect;
+window._showModeSelect=showModeSelect;
 
 // ═══════════════════════════════════════════
 // SINGLE PLAYER STATE
@@ -7259,6 +7261,9 @@ initHomeParticles();
 </dialog>
 
 <script>
+// Bridge: ensure module functions are callable from onclick attributes
+function showModeSelect(mode){ if(window._showModeSelect) window._showModeSelect(mode); }
+function showToGoBooks(){ if(window._showToGoBooks) window._showToGoBooks(); }
 // ── Carousel mouse drag (desktop) ──
 (function(){
   const el = document.getElementById('rw-carousel');
