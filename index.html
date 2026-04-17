@@ -7276,11 +7276,15 @@ function rwOpenDialog() {
   if (section && localStorage.getItem('rw_waitlist') === '1') {
     section.innerHTML = '<div style="text-align:center;padding:0.6rem 0 0.4rem;color:var(--accent);font-size:0.85rem;font-weight:600;">✓ You\'re on the list! 🌳<br><span style="font-size:0.75rem;color:var(--muted);font-weight:400;">We\'ll reach out when Readwood is ready.</span></div>';
   }
-  // Load live count
-  const saved = parseInt(localStorage.getItem('rw_count') || '424');
-  const el = document.getElementById('rw-count');
-  if (el) el.textContent = saved;
   d.showModal();
+  // Fetch real count from Firebase via worker
+  fetch('https://bookswipe-api.flamurziba95.workers.dev/count')
+    .then(r => r.json())
+    .then(data => {
+      const el = document.getElementById('rw-count');
+      if (el && data.count) el.textContent = data.count;
+    })
+    .catch(() => {}); // silently fail, shows default 424
 }
 
 function rwDialogBackdropClose(e) {
@@ -7305,13 +7309,10 @@ async function rwSubmitWaitlist() {
       body: JSON.stringify({email, source:'home-popup'})
     });
     if (res.ok) {
-      // Increment local count
-      const current = parseInt(localStorage.getItem('rw_count') || '424');
-      const next = current + 1;
-      localStorage.setItem('rw_count', next);
+      const data = await res.json();
       localStorage.setItem('rw_waitlist','1');
       const countEl = document.getElementById('rw-count');
-      if (countEl) countEl.textContent = next;
+      if (countEl && data.count) countEl.textContent = data.count;
       document.getElementById('rw-waitlist-section').innerHTML =
         '<div style="text-align:center;padding:0.8rem 0;color:var(--accent);font-size:0.9rem;font-weight:600;">✓ You\'re on the list! 🌳<br><span style="font-size:0.75rem;color:var(--muted);font-weight:400;">We\'ll reach out when Readwood is ready.</span></div>';
     } else { throw new Error(); }
