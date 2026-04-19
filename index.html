@@ -1122,7 +1122,7 @@ input::placeholder{color:var(--muted);}
   <div class="sub" style="margin-bottom:1.2rem;">Multiplayer</div>
   <div class="card-panel">
     <label>Your name</label>
-    <input type="text" id="inp-name" placeholder="e.g. Flamur" maxlength="20" autocomplete="off"/>
+    <input type="text" id="inp-name" placeholder="e.g. John" maxlength="20" autocomplete="off"/>
     <button class="btn btn-primary" onclick="createRoom()">✦ Create a new room</button>
     <div class="divider">— or join existing —</div>
     <label>Room code</label>
@@ -1307,11 +1307,9 @@ let currentUser = null;
 
 // ── THEME SYSTEM ──────────────────────────────
 (function initTheme() {
-  const saved = localStorage.getItem('rw_theme'); // 'dark' | 'light' | null (auto)
-  if (saved) {
-    document.documentElement.setAttribute('data-theme', saved);
-  }
-  // Update toggle icon whenever called
+  // Force dark always on lite version
+  document.documentElement.setAttribute('data-theme', 'dark');
+  localStorage.setItem('rw_theme', 'dark');
   updateThemeIcon();
 })();
 
